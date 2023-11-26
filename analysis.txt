@@ -1,0 +1,16 @@
+The traceback that is generated and shown by Jaeger shows us a timeline
+of the requests that were made by our program. In this case, there is one
+request, with a depth of two and consisting of three spans.
+The main request was the GET that was explicitly called by myself on the command
+line using curl. It took a total of 28.39 ms, was directed to localhost:3000/todo (our 
+backend), and was successful as understood by the status code of 200.
+
+On top of that explicit call, there are two more spans which are the express request
+and the mongo request. The express request is called upon by the main GET request and
+is another GET request. It takes 22.58 ms, all of which is contained within the main request
+and it calls mongo to find the data for our todo tasks. That request to mongo is marked as
+a find request, and only takes 2.43 ms. By viewing the timeline that Jaeger generates, it's
+relatively easy to see the relationship between the three spans, that being that the main GET
+request contains the express GET request, which contains the mongo find operation. We can imagine
+that everything after the mongo find consists of parsing and then returning the data that the
+GET requested.
