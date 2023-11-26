@@ -1,6 +1,7 @@
-The traceback that is generated and shown by Jaeger shows us a timeline
-of the requests that were made by our program. In this case, there is one
-request, with a depth of two and consisting of three spans.
+The traceback that is generated and shown by Jaeger consists of a timeline
+of the requests that were made by our program along with information about each
+of the requests made and the spans that make up the request. In this case, there is 
+one request, with a depth of two and consisting of three spans.
 The main request was the GET that was explicitly called by myself on the command
 line using curl. It took a total of 28.39 ms, was directed to localhost:3000/todo (our 
 backend), and was successful as understood by the status code of 200.
